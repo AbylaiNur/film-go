@@ -14,13 +14,9 @@
         <% movies.forEach(movie => { %>
         <div class="col-2 mb-4">
             <div class="card text-bg-dark h-100 border-0">
-                <%if (movie.image){%>
-                <div class="card-img-top">
-                    <img src="data:image/<%=movie.image.contentType%>;base64,<%=movie.image.data.toString('base64')%>" alt=""><%movie.image.data%>
-                </div>
-            <%}else{%>
-                    <img class="card-img-top" src="https://image.tmdb.org/t/p/w500/<%= movie.poster_path %>" alt="movie">
-                <%}%>
+
+                <img class="card-img-top" src="https://image.tmdb.org/t/p/w500/<%= movie.poster_path %>" alt="movie">
+
                 <div class="card-body">
                     <%= movie.title %>
                     <span class="ms-auto"><%= movie.vote / movie.vote_count %></span>

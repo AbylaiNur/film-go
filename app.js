@@ -14,7 +14,8 @@ const loginRouter = require('./routes/loginRoutes');
 const logoutRouter = require('./routes/logoutRoutes');
 const moviesRouter = require('./routes/moviesRouter');
 
-const db_Url = 'mongodb+srv://admin:pnm6VLSTYrvXDoj4@cluster0.1dtth.mongodb.net/users';
+// JpLleJ07d6ziqqM0
+const db_Url = 'mongodb+srv://abylai:JpLleJ07d6ziqqM0@cluster0.oyjeix1.mongodb.net/test';
 
 const api_key = "9db36715f42a504baccc657a0d88c924";
 // model for User
