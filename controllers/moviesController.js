@@ -1,4 +1,3 @@
-const Movie = require("../models/movie");
 const axios = require("axios");
 
 const movies_page = async (req, res) => {

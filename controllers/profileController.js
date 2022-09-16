@@ -1,5 +1,4 @@
 const User = require("../models/user");
-const Movie = require("../models/movie");
 const axios = require("axios");
 
 
@@ -12,13 +11,16 @@ const profile_the_user = async (req, res) => {
     let moviesWatched = [];
     req.session.user = await User.findById(req.session.user._id);
     for (let i = 0; i < idsWatchLater.length; i++) {
-        moviesWatchLater[i] = await Movie.findOne({"id" : idsWatchLater[i]});
+        let id = idsWatchLater[i];
+        moviesWatchLater[i] = (await axios(`https://api.themoviedb.org/3/movie/${id}?api_key=9db36715f42a504baccc657a0d88c924&language=en-US`)).data;;
     }
     for (let i = 0; i < idsFavorite.length; i++) {
-        moviesFavorite[i] = await Movie.findOne({"id" : idsFavorite[i]});
+        let id = idsFavorite[i];
+        moviesFavorite[i] = (await axios(`https://api.themoviedb.org/3/movie/${id}?api_key=9db36715f42a504baccc657a0d88c924&language=en-US`)).data;;
     }
     for (let i = 0; i < idsWatched.length; i++) {
-        moviesWatched[i] = await Movie.findOne({"id" : idsWatched[i]});
+        let id = idsWatched[i];
+        moviesWatched[i] = (await axios(`https://api.themoviedb.org/3/movie/${id}?api_key=9db36715f42a504baccc657a0d88c924&language=en-US`)).data;;
     }
     res.render('profileUser', {user: req.session.user, moviesWatchLater, moviesFavorite, moviesWatched});
 }
@@ -32,13 +34,16 @@ const profile_id = async (req, res, next) => {
     let moviesFavorite = [];
     let moviesWatched = [];
     for (let i = 0; i < idsWatchLater.length; i++) {
-        moviesWatchLater[i] = await Movie.findOne({"id" : idsWatchLater[i]});
+        let id = idsWatchLater[i];
+        moviesWatchLater[i] = (await axios(`https://api.themoviedb.org/3/movie/${id}?api_key=9db36715f42a504baccc657a0d88c924&language=en-US`)).data;;
     }
     for (let i = 0; i < idsFavorite.length; i++) {
-        moviesFavorite[i] = await Movie.findOne({"id" : idsFavorite[i]});
+        let id = idsFavorite[i];
+        moviesFavorite[i] = (await axios(`https://api.themoviedb.org/3/movie/${id}?api_key=9db36715f42a504baccc657a0d88c924&language=en-US`)).data;;
     }
     for (let i = 0; i < idsWatched.length; i++) {
-        moviesWatched[i] = await Movie.findOne({"id" : idsWatched[i]});
+        let id = idsWatched[i];
+        moviesWatched[i] = (await axios(`https://api.themoviedb.org/3/movie/${id}?api_key=9db36715f42a504baccc657a0d88c924&language=en-US`)).data;;
     }
     res.render('profile', {user: user, moviesWatchLater, moviesFavorite, moviesWatched});
 }
@@ -61,7 +66,6 @@ const profile_to_login = (req, res) => {
 }
 
 const profile_to_admin_panel = (req, res) => {
-    console.log("look at admin");
     res.redirect('adminPanel');
 }
 

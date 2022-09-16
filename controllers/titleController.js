@@ -1,6 +1,5 @@
 const axios = require("axios");
 const User = require('../models/user')
-const Movie = require('../models/movie');
 const Comment = require('../models/comment');
 const find = (datas, key, value) => {
    for (let i = 0; i < datas.length; i++) {
@@ -15,7 +14,6 @@ const title_details = async (req, res) => {
     const videoTrailer = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=9db36715f42a504baccc657a0d88c924&language=en-US`;
 
     const movie = (await axios(`https://api.themoviedb.org/3/movie/${id}?api_key=9db36715f42a504baccc657a0d88c924&language=en-US`)).data;
-    console.log(movie);
 
     const comments = await Comment.find({"movie_id":id}).sort({"createdAt":1});
     const trailerData = await axios(videoTrailer);

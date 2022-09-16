@@ -24,12 +24,8 @@ router.get('/addMovie', isAdmin, (req, res) => {
     res.render('addMovie');
 })
 
-router.post('/addMovie',upload.single('image'), isAdmin, adminPanelController.add_movie )
-router.get('/editMovie/:id', isAdmin, adminPanelController.edit_movie_page);
-router.post('/editMovie/:id', isAdmin, adminPanelController.edit_movie);
-
-router.get('/deleteMovie/:id', isAdmin, adminPanelController.delete_movie);
 router.get('/', (req, res) => {
     res.redirect('/');
 });
+
 module.exports = router;

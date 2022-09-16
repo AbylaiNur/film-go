@@ -38,47 +38,12 @@ const edit_user = async (req, res) => {
     res.redirect('/adminPanel');
 }
 
-const add_movie = async (req, res) => {
-    const movie = new Movie(req.body);
-    movie.image = ({
-        data:req.file.filename,
-        contentType:'image/jpg'
-    });
-    await movie.save();
-    res.redirect('/adminPanel');
-}
 
-const edit_movie_page = async (req, res) => {
-    const id = req.params.id;
-    let movie = await Movie.findById(id);
-    res.render('editMovie',{movie});
-}
-
-const edit_movie = async (req, res) => {
-    const id=req.params.id;
-    const movie = new Movie(req.body);
-    movie.image = ({
-        data:req.file.filename,
-        contentType:'image/jpg'
-    });
-    await Movie.findByIdAndUpdate(id, movie);
-    res.redirect('/adminPanel');
-}
-
-const delete_movie = async (req, res) => {
-
-    await Movie.findByIdAndDelete(req.params.id);
-    res.redirect('/adminPanel');
-}
 
 module.exports = {
     admin_panel_index,
     add_user_page,
     add_user,
     edit_user_page,
-    edit_user,
-    add_movie,
-    edit_movie_page,
-    edit_movie,
-    delete_movie
+    edit_user
 }
