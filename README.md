@@ -1,5 +1,8 @@
 ### FilmGo
 
+The application looks for information about trending movies. You can read info about movies or share your thoughts by writing comments on films and other users' comments.
+
+[The website](https://film-go.herokuapp.com/).
 
 ### Built With
 
